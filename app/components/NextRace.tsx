@@ -1,7 +1,6 @@
 import { utcToZonedTime } from "date-fns-tz";
 import React from "react";
 import CountdownTimer from "./CountdownTimer";
-import MapComponent from "./MapComponent";
 import dynamic from "next/dynamic";
 import { format } from "date-fns";
 
@@ -39,7 +38,6 @@ async function getNextRace() {
 
 export default async function NextRace(): Promise<JSX.Element> {
   const nextRace = await getNextRace();
-  console.log(nextRace);
 
   return (
     <div className="h-fit p-5 bg-neutral-200 rounded shadow-lg">
