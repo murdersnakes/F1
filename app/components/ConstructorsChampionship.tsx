@@ -16,7 +16,6 @@ async function fetchConstructorsData() {
 
 export default async function ConstructorsChampionship() {
   const data = await fetchConstructorsData();
-  console.log(data);
 
   return (
     <table className="divide-y divide-gray-200 dark:divide-gray-700 rounded overflow-hidden h-fit shadow-lg">
