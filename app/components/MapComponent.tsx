@@ -17,7 +17,7 @@ interface MapComponentProps {
 const ChangeView = ({ center }) => {
   const map = useMap();
   useEffect(() => {
-    map.setView(center, 7); // zoom level is set to 13
+    map.setView(center, 15); // zoom level is set to 13
   }, [center]);
   return null;
 };

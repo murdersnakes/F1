@@ -50,49 +50,69 @@ export default async function NextRace(): Promise<JSX.Element> {
         Circuit Name:{" "}
         <span className="font-medium">{nextRace.Circuit.circuitName}</span>
       </p>
-      <p className="font-light text-sm uppercase">
-        1st Practice:{" "}
-        <span className="font-medium">
-          {formatDate(nextRace.FirstPractice.date)} •{" "}
-          {formatTime(nextRace.FirstPractice.time)}
-        </span>
-      </p>
-      <p className="font-light text-sm uppercase">
-        2nd Practice:{" "}
-        <span className="font-medium">
-          {formatDate(nextRace.SecondPractice.date)} •{" "}
-          {formatTime(nextRace.SecondPractice.time)}
-        </span>
-      </p>
-      <p className="font-light text-sm uppercase">
-        3rd Practice:{" "}
-        <span className="font-medium">
-          {formatDate(nextRace.ThirdPractice.date)} •{" "}
-          {formatTime(nextRace.ThirdPractice.time)}
-        </span>
-      </p>
-      <p className="font-light text-sm uppercase">
-        Qualifying:{" "}
-        <span className="font-medium">
-          {formatDate(nextRace.Qualifying.date)} •{" "}
-          {formatTime(nextRace.Qualifying.time)}
-        </span>
-      </p>
-      {nextRace.Sprint && nextRace.Sprint.date ? (
-        <p className="font-light text-sm uppercase">
-          Sprint:{" "}
-          <span className="font-medium">
-            {formatDate(nextRace.Sprint.date)} •{" "}
-            {formatTime(nextRace.Sprint.time)}
-          </span>
-        </p>
-      ) : null}
-      <p className="font-light text-sm uppercase">
-        Race:{" "}
-        <span className="font-medium">
-          {formatDate(nextRace.date)} • {formatTime(nextRace.time)}
-        </span>
-      </p>
+      <table className="table-auto text-start w-full mt-3 mb-5">
+        <thead className="text-left border-b-2 border-black">
+          <tr>
+            <th className="px-2 py-1">Event</th>
+            <th className="px-2 py-1">Date</th>
+            <th className="px-2 py-1">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="bg-gray-300 text-gray-600">
+            <td className="border px-2 py-1">1st Practice</td>
+            <td className="border px-2 py-1">
+              {formatDate(nextRace.FirstPractice.date)}
+            </td>
+            <td className="border px-2 py-1">
+              {formatTime(nextRace.FirstPractice.time)}
+            </td>
+          </tr>
+          <tr className="bg-gray-300 text-gray-600">
+            <td className="border px-2 py-1">2nd Practice</td>
+            <td className="border px-2 py-1">
+              {formatDate(nextRace.SecondPractice.date)}
+            </td>
+            <td className="border px-2 py-1">
+              {formatTime(nextRace.SecondPractice.time)}
+            </td>
+          </tr>
+          <tr className="bg-gray-300 text-gray-600">
+            <td className="border px-2 py-1">3rd Practice</td>
+            <td className="border px-2 py-1">
+              {formatDate(nextRace.ThirdPractice.date)}
+            </td>
+            <td className="border px-2 py-1">
+              {formatTime(nextRace.ThirdPractice.time)}
+            </td>
+          </tr>
+          <tr className="bg-emerald-300 text-emerald-900">
+            <td className="border px-2 py-1">Qualifying</td>
+            <td className="border px-2 py-1">
+              {formatDate(nextRace.Qualifying.date)}
+            </td>
+            <td className="border px-2 py-1">
+              {formatTime(nextRace.Qualifying.time)}
+            </td>
+          </tr>
+          {nextRace.Sprint && nextRace.Sprint.date ? (
+            <tr className="bg-amber-300 text-amber-900">
+              <td className="border px-2 py-1">Sprint</td>
+              <td className="border px-2 py-1">
+                {formatDate(nextRace.Sprint.date)}
+              </td>
+              <td className="border px-2 py-1">
+                {formatTime(nextRace.Sprint.time)}
+              </td>
+            </tr>
+          ) : null}
+          <tr className="bg-rose-600 text-white">
+            <td className="border px-2 py-1">Race</td>
+            <td className="border px-2 py-1">{formatDate(nextRace.date)}</td>
+            <td className="border px-2 py-1">{formatTime(nextRace.time)}</td>
+          </tr>
+        </tbody>
+      </table>
       <DynamicMapComponent location={nextRace.Circuit.Location} />
       <CountdownTimer targetDate={`${nextRace.date}T${nextRace.time}`} />
     </div>
