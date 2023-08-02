@@ -4,7 +4,7 @@ import React from "react";
 import CountdownTimer from "./CountdownTimer";
 
 async function getNextRace() {
-  const res = await fetch("http://ergast.com/api/f1/current.json");
+  const res = await fetch("http://ergast.com/api/f1/current.json", { next: { revalidate: 3600 } });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -13,6 +13,8 @@ async function getNextRace() {
   const races = data.MRData.RaceTable.Races;
   const nextRace = races.find((race) => {
     const raceDateTime = utcToZonedTime(`${race.date}T${race.time}`, "Etc/UTC");
+    console.log(raceDateTime);
+    
     return raceDateTime >= new Date();
   });
 
